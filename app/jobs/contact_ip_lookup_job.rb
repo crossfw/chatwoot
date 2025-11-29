@@ -17,6 +17,7 @@ class ContactIpLookupJob < ApplicationJob
     contact.additional_attributes['city'] = geocoder_result.city
     contact.additional_attributes['country'] = geocoder_result.country
     contact.additional_attributes['country_code'] = geocoder_result.country_code
+    contact.additional_attributes['isp'] = geocoder_result.isp if geocoder_result.isp.present?
     contact.save!
   end
 
