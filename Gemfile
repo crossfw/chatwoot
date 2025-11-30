@@ -144,6 +144,8 @@ gem 'web-push', '>= 3.0.1'
 gem 'geocoder'
 # to parse maxmind db
 gem 'maxminddb'
+# to parse QQWry (纯真) IP database
+gem 'qqwry'
 
 # to create db triggers
 gem 'hairtrigger'
