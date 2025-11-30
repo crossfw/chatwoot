@@ -20,13 +20,20 @@ class IpLookupService
 
   def build_result(lookup_result)
     location = lookup_result.country&.strip
+    isp = lookup_result.area&.strip
 
     Result.new(
-      city: location,
+      city: city_with_isp(location, isp),
       country: location,
       country_code: normalize_country_code(location),
-      isp: lookup_result.area&.strip
+      isp: isp
     )
+  end
+
+  def city_with_isp(location, isp)
+    return location if isp.blank?
+
+    [location, isp].compact.join(' - ')
   end
 
   def normalize_country_code(location)
